@@ -12,4 +12,5 @@
     - gzip开启font/ttf等
   - vue首屏渲染方案
     - https://juejin.im/post/5a9ca40b6fb9a028b77a4aac
+    - https://ssr.vuejs.org/zh/
   
