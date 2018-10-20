@@ -13,4 +13,7 @@
   - vue首屏渲染方案
     - https://juejin.im/post/5a9ca40b6fb9a028b77a4aac
     - https://ssr.vuejs.org/zh/
-  
+  - wangEditor坑
+    - 换行获取text纯文本不带空格,纯文本内容无法正常显示
+    - 有时候会出现spanyes标签，导致filter过滤失败后直接输出，暂时不明原因
+    - 
