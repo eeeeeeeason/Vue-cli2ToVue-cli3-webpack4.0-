@@ -1,5 +1,20 @@
 # Vue-cli2ToVue-cli3-webpack4.0-
-项目开发阶段构建太慢超过300秒，按需加载所有组件也需50秒，转为vue-cli3.0配置少量webpack即可达到15秒的构建速度效果，可以接受
+项目开发阶段构建太慢超过300秒，按需加载所有组件也需50秒，转为vue-cli3.0配置少量webpack即可达到10秒的构建速度效果,热重载2秒，可以接受
+- vue-cli2>>>>vue-cli3
+  - 项目处理src直接移植到cli3项目
+  - 处理pug语法;vue.config.js补充chainWebpack
+    ```
+      chainWebpack: config => {
+        config.plugins.delete('prefetch');
+        config.module
+          .rule('pug')
+          .test(/\.pug$/)
+          .use('pug-plain-loader')
+          .loader('pug-plain-loader')
+          .end();
+      },
+    ```
+  
 - todoList:已解决
   - 构建使用history模式去掉hash后必须在public中配置路径模式为绝对路径,nginx处理重定向
   - 苹方字体抽离
@@ -31,6 +46,8 @@
                |-lang.json
                |-abc.vue
       ```
+    - 在#app中$i18n.locale判断语境，新增最外层类名isEN以便对子元素中英切换时的处理
+      - #app(@click.stop="clickBlank" :class="{isEN:isEn}")
     - router处理,逻辑是在每次跳转先将from来源的参数存储入keysArr，包括lang属性，排序固定为?lang=en&a=123&b=456
       ```
         function nextWithLang() {
